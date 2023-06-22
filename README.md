@@ -70,6 +70,9 @@ void apagarSistema()
 🎨
 
 ~~~ C (lenguaje en el que esta escrito)
+/*
+PROGRAMA PRINCIPAL
+*/
 
 #include <IRremote.h>
 #include <Servo.h>
