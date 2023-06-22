@@ -19,8 +19,9 @@ Se muestra por medio de un display LCD la temperatura actual y la estacion del a
 
 ~~~ C (lenguaje en el que esta escrito)
 
-/* 1. Esta función se encarga de convertir la lectura del sensor a °C, mostrarla en el display LCD junto con la estación del año.
-y que en el caso de que la temperatura suba a mas de 60°C accionar la alarma y mover el servo motor */
+/* 1. Esta función se encarga de convertir la lectura del sensor a °C, mostrarla en el display LCD junto
+con la estación del año.
+Y en el caso de que la temperatura suba a mas de 60°C accionar la alarma y mover el servo motor */
   
   void encenderSistema()  
 {
