@@ -5,7 +5,7 @@
 ## Integrantes 
 - Campos Tomás
 
-## Proyecto: 
+## ⏰ Proyecto: 
 ![image](https://github.com/TomasCampos26/parcial2/assets/123908697/ca1e38c2-1a75-4c7b-bee6-10e49c4ff7aa)
 
 
@@ -15,107 +15,58 @@ es realizar una alarma de incendio utilizando Arduino, que detecte los cambios d
 y active un servo motor en caso de detectar un incendio.
 Se muestra por medio de un display LCD la temperatura actual y la estacion del año.
 
-## Función principal
-Esta funcion se encarga de prender en el display el numero que le envias por parámetro.
+## Funciones principales:
 
 ~~~ C (lenguaje en el que esta escrito)
-void PrenderDisplay(int numero)
+
+/* 1. Esta función se encarga de convertir la lectura del sensor a °C, mostrarla en el display LCD junto con la estación del año.
+y que en el caso de que la temperatura suba a mas de 60°C accionar la alarma y mover el servo motor */
+  
+  void encenderSistema()  
 {
-  digitalWrite(A, LOW);
-  digitalWrite(B, LOW);
-  digitalWrite(C, LOW);
-  digitalWrite(D, LOW);
-  digitalWrite(E, LOW);
-  digitalWrite(F, LOW);
-  digitalWrite(G, LOW);
+  int lecturaSensor = analogRead(A0);
+  int conversor = map(lecturaSensor, 20, 358, -40, 125);
+  digitalWrite(LED_ROJO, LOW);
+  digitalWrite(LED_VERDE, HIGH);
   
-  switch(numero)
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("ESTACION: VERANO"); 
+  lcd.setCursor(0, 1);
+  lcd.print("TEMP: "); 
+  lcd.setCursor(6, 1);
+  lcd.print(conversor);
+  delay(500);
+  
+  if (conversor > 59)
   {
-    case 0:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(D, HIGH);
-    digitalWrite(E, HIGH);
-    digitalWrite(F, HIGH);
-    break;
-    
-    case 1:
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    break;
-    
-    case 2:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(G, HIGH);
-    digitalWrite(E, HIGH);
-    digitalWrite(D, HIGH);
-    break;
-  
-    case 3:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(G, HIGH);
-    digitalWrite(D, HIGH);
-    break;
-    
-    case 4:
-    digitalWrite(F, HIGH);
-    digitalWrite(G, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    break;  
-    
-    case 5:
-    digitalWrite(A, HIGH);
-    digitalWrite(F, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(G, HIGH);
-    digitalWrite(D, HIGH);
-    break;  
-    
-    case 6:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(G, HIGH);
-    digitalWrite(D, HIGH);
-    break;  
-    
-    case 7:
-    digitalWrite(A, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(D, HIGH);
-    digitalWrite(E, HIGH);
-    digitalWrite(F, HIGH);   
-    digitalWrite(G, HIGH);
-    break;  
-    
-    case 8:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(D, HIGH);
-    digitalWrite(E, HIGH);
-    digitalWrite(F, HIGH);   
-    digitalWrite(G, HIGH);
-    break;  
-    
-    case 9:
-    digitalWrite(A, HIGH);
-    digitalWrite(B, HIGH);
-    digitalWrite(C, HIGH);
-    digitalWrite(D, HIGH);
-    digitalWrite(F, HIGH);   
-    digitalWrite(G, HIGH);
-    break;
-  } 
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("ALERTA ALARMA");
+    digitalWrite(LED_ROJO, HIGH);
+    digitalWrite(LED_VERDE, LOW);
+    servo.write(0);
+    delay(1000);
+    servo.write(180);
+    delay(1000);     
+  }
 }
+
+/* 2. Esta función se encarga de apagar los leds y avisar por display que el
+sistema está apagado */
+  
+void apagarSistema()
+{
+  digitalWrite(LED_VERDE, LOW);
+  digitalWrite(LED_ROJO, LOW);
+  delay(100);
+  lcd.setCursor(0, 0);
+  lcd.print("Sistema apagado");
+}
+
 ~~~
 
-## 🛗 Link al proyecto:
-- [Proyecto](https://www.tinkercad.com/things/2EVauB1FZrG-parcial-montacargas/editel)
+## 🥇 Link al proyecto:
+- [Proyecto](https://www.tinkercad.com/things/g8Cci8ZcVkj-copy-of-2do-parcial/editel?tenant=circuits)
 
 ---
