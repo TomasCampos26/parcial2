@@ -6,12 +6,14 @@
 - Campos Tomás
 
 ## Proyecto: 
-![PARCIAL MONTACARGAS](https://github.com/TomasCampos26/ParcialMontacargas/assets/123908697/c8233e7c-f5eb-4ff1-8d85-1a5e0a754854)
+![image](https://github.com/TomasCampos26/parcial2/assets/123908697/ca1e38c2-1a75-4c7b-bee6-10e49c4ff7aa)
 
 
 ## Descripción
-El proyecto trata de una simulación de un montacargas. Con el botón 1 el montacargas sube un solo piso. Con el botón 2, baja un solo piso.
-Y con el botón 3 para el circuito hasta que ya no lo presiones.
+El proyecto trata de una simulación de una alarma. El objetivo del proyecto
+es realizar una alarma de incendio utilizando Arduino, que detecte los cambios de temperatura
+y active un servo motor en caso de detectar un incendio.
+Se muestra por medio de un display LCD la temperatura actual y la estacion del año.
 
 ## Función principal
 Esta funcion se encarga de prender en el display el numero que le envias por parámetro.
